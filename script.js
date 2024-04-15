@@ -269,9 +269,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Function to render user cards
 const renderUserList = () => {
-  const userListContainer = document.getElementById("userList");
+  const userListContainer = document.getElementById("user-list");
   userListContainer.innerHTML =
-    userData.length > 0 ? "" : "No user data found!";
+    userData.length > 0
+      ? `
+      <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Birthday</th>
+        <th>State</th>
+        <th>Gender</th>
+        <th>Hobbies</th>
+        <th>Actions</th>
+      </tr>
+    `
+      : "No user data found!";
   userData.forEach((user, index) => {
     generateUserCard(user, userListContainer, index);
   });
@@ -279,27 +292,40 @@ const renderUserList = () => {
 
 // Function to generate user cards
 const generateUserCard = (user, userListContainer, index) => {
-  const card = document.createElement("div");
-  card.classList.add("user-card");
+  const row = document.createElement("tr");
 
-  card.innerHTML = `
-    <div class="user-details">
-      <p><span>No:</span> ${index + 1}</p>
-      <p><span>Name:</span> ${user.fname} ${user.lname}</p>
-      <p><span>Email:</span> ${user.email}</p>
-      <p><span>Birthday:</span> ${user.birthday}</p>
-      <p><span>State:</span> ${user.state}</p>
-      <p><span>Gender:</span> ${user.gender}</p>
-      <p><span>Hobbies:</span> ${user.hobby.join(", ")}</p>
-    </div>
-    <div class="user-buttons">
-      <button class="edit" onclick="editUser('${user.id}')">Edit</button>
-      <div class="horizontal-input-spacer"></div>
-      <button class="delete" onclick="deleteUser('${user.id}')">Delete</button>
-    </div>
-  `;
+  const no = document.createElement("td");
+  no.textContent = index + 1;
+  const name = document.createElement("td");
+  name.textContent = `${user.fname} ${user.lname}`;
+  const email = document.createElement("td");
+  email.textContent = user.email;
+  const birthday = document.createElement("td");
+  birthday.textContent = user.birthday;
+  const state = document.createElement("td");
+  state.textContent = user.state;
+  const gender = document.createElement("td");
+  gender.textContent = user.gender;
+  const hobby = document.createElement("td");
+  hobby.textContent = user.hobby.join(", ");
+  const actions = document.createElement("td");
+  actions.innerHTML = `<div class="user-buttons">
+  <button class="edit" onclick="editUser('${user.id}')">Edit</button>
+  <div class="horizontal-input-spacer"></div>
+  <button class="delete" onclick="deleteUser('${user.id}')">Delete</button>
+</div>
+</td>`;
 
-  userListContainer.appendChild(card);
+  row.appendChild(no);
+  row.appendChild(name);
+  row.appendChild(email);
+  row.appendChild(birthday);
+  row.appendChild(state);
+  row.appendChild(gender);
+  row.appendChild(hobby);
+  row.appendChild(actions);
+
+  userListContainer.appendChild(row);
 };
 
 // Function to edit user data

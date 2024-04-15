@@ -91,6 +91,7 @@ body {
   width: 100%;
   box-sizing: border-box;
   margin-left: 16px;
+  overflow-x: auto;
 }
 
 #detail-view>h4 {
@@ -246,6 +247,33 @@ select:focus {
   display: none;
 }
 
+#user-list {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#user-list td,
+#user-list th {
+  border: 1px solid var(--border);
+  padding: 8px;
+}
+
+#user-list tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#user-list tr:hover {
+  background-color: #ddd;
+}
+
+#user-list th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: var(--primary);
+  color: var(--text-dark);
+}
+
 /* Add/Edit form styles ends here */
 
 /* Data view styles starts here */
@@ -280,6 +308,7 @@ select:focus {
 }
 
 .user-buttons button {
+  min-width: auto;
   padding: 8px 15px;
   border: none;
   border-radius: 5px;
