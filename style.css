@@ -7,7 +7,7 @@
   --background-secondary: #ffffff;
   --border: #e6e6e6;
   --tertiary: #d3c8e0;
-  --error: red;
+  --error: #ff3333;
   --success: green;
 }
 
@@ -35,7 +35,7 @@ body {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
-.navbar h4 {
+.navbar h3 {
   padding: 14px 0px;
   margin-block-start: 0;
   margin-block-end: 0;
@@ -52,7 +52,6 @@ body {
   padding: 14px 16px;
   text-decoration: none;
   color: var(--text);
-  text-align: center;
 }
 
 /* change background color of navbar link for not active class */
@@ -92,6 +91,11 @@ body {
   width: 100%;
   box-sizing: border-box;
   margin-left: 16px;
+}
+
+#detail-view>h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
 }
 
 /* main styles ends here */
@@ -185,7 +189,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 input[type="button"],
 button {
-  width: calc(50% - 8px);
+  min-width: 200px;
   height: 42px;
   background-color: var(--primary);
   border-radius: 4px;
@@ -219,20 +223,81 @@ select:focus {
 }
 
 .alert {
-  width: 100%;
-  background-color: var(--success);
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background-color: rgba(0, 128, 0, 0.9);
+  color: #fff;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 1;
   display: none;
-  padding: 8px 16px;
-  align-items: center;
-  color: var(--text-dark);
-  font-size: 14px;
 }
 
 .show {
-  display: flex !important;
+  display: block;
+  opacity: 1;
+}
+
+#update-btn {
+  display: none;
 }
 
 /* Add/Edit form styles ends here */
+
+/* Data view styles starts here */
+.user-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 15px;
+  background-color: #f9f9f9;
+}
+
+.user-card:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.user-details {
+  margin-bottom: 16px;
+}
+
+.user-details p {
+  margin: 5px 0;
+}
+
+.user-details span {
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.user-buttons {
+  display: flex;
+}
+
+.user-buttons button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.user-buttons button.edit {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.user-buttons button.delete {
+  background-color: var(--error);
+  color: #fff;
+}
+
+
+/* Data view styles ends here */
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -244,7 +309,7 @@ select:focus {
     padding: 0 0;
   }
 
-  .navbar h4 {
+  .navbar h3 {
     padding: 14px 16px;
     text-align: center;
   }
@@ -276,6 +341,17 @@ select:focus {
   }
 
   /* main styles ends here */
+
+  /* Data view styles starts here */
+  .user-buttons {
+    flex-direction: column;
+  }
+
+  .user-buttons .edit {
+    margin-bottom: 16px;
+  }
+
+  /* Data view styles ends here */
 }
 
 /* Medium devices (landscape tablets, 601px to 768px) */

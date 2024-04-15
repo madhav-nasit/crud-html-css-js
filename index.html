@@ -14,7 +14,6 @@
     <link rel="icon" type="image/png" href="/images/favicon-96.png" sizes="96x96">
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/59ee451417.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="script.js"></script>
 </head>
 
 <body>
@@ -23,18 +22,21 @@
         <h3>HTML + CSS + JS</h3>
         <div>
             <a href="#" class="active">Home</a>
+            <a href="https://mindfiredigital.github.io/privacy-policy">Privacy</a>
+            <a href="https://mindfiredigital.github.io/terms-of-use">Terms</a>
         </div>
     </div>
 
+    <!-- Alert View -->
     <div class="alert" id="alert-view">
-        <p>Text</p>
+        <p>ds,ahkdjaslkjdlkasjldkj dkjlaks jd</p>
     </div>
 
     <div class="main">
         <!-- Form section -->
         <div id="add-form">
             <form id="form-container">
-
+                <input type="hidden" id="id" />
                 <div class="horizontal-input">
                     <div>
                         <label class="required" for="fname">First Name</label>
@@ -72,7 +74,7 @@
                         <div class="input-container">
                             <i class="fa-solid fa-calendar"></i>
                             <input type="date" id="birthday" name="birthday" placeholder="Birthday" required
-                                onblur="validateInputOnBlur(this)">
+                                onblur="validateInputOnBlur(this)" onfocus="this.showPicker()">
                             <p class="error-message"></p>
                         </div>
                     </div>
@@ -199,13 +201,18 @@
                     </div>
                 </div>
 
-                <button type="button" onclick="validateFormOnClick()">Submit</button>
+                <button type="button" id="submit-btn" onclick="validateFormOnClick()">Submit</button>
+                <button type="button" id="update-btn" onclick="validateFormOnClick()">Update</button>
             </form>
         </div>
         <div id="detail-view">
-            <p>Right</p>
+            <h4>User List:</h4>
+            <div class="container" id="userList">
+                <!-- User data will be displayed here -->
+            </div>
         </div>
     </div>
+    <script type="text/javascript" src="script.js"></script>
 </body>
 
 </html>
