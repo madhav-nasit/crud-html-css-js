@@ -3,16 +3,20 @@
   --primary: #8034de;
   --text: #333333;
   --text-dark: #e6e6e6;
-  --background: #ffffff;
-  --background-secondary: #f5f5f5;
+  --background: #f5f5f5;
+  --background-secondary: #ffffff;
   --border: #e6e6e6;
-  --tertitery: #d3c8e0;
+  --tertiary: #d3c8e0;
+  --error: red;
 }
 
 body {
   margin: 0px;
   background-color: var(--background);
   color: var(--text);
+  font-family: Verdana, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 /* navbar styles starts here */
@@ -52,7 +56,7 @@ body {
 
 /* change background color of navbar link for not active class */
 .navbar div a:hover:not(.active) {
-  background-color: var(--tertitery);
+  background-color: var(--tertiary);
 }
 
 /* change background color and text color of active link */
@@ -60,23 +64,231 @@ body {
   background-color: var(--primary);
   color: var(--text-dark);
 }
+
 /* navbar styles ends here */
+
+/* main styles starts here */
+.main {
+  display: flex;
+  margin: 16px;
+}
+
+.main>div {
+  background-color: var(--background-secondary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 16px;
+}
+
+#add-form {
+  flex: 40%;
+  align-self: flex-start;
+}
+
+#detail-view {
+  flex: 60%;
+  align-self: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+  margin-left: 16px;
+}
+
+/* main styles ends here */
+
+/* Add/Edit form styles starts here */
+.input-container {
+  position: relative;
+  margin: 0px 0px 16px 0px;
+}
+
+#add-form i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+}
+
+.horizontal-input {
+  display: flex;
+  position: relative;
+}
+
+.horizontal-input div:not(.horizontal-input-spacer) {
+  flex: 50%;
+}
+
+.horizontal-input-spacer {
+  width: 16px;
+}
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 16px 0;
+}
+
+#radio-heading {
+  margin: 0px 0px 8px 0px;
+}
+
+.radio-group div {
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+}
+
+label.required::after {
+  content: " *";
+  color: var(--error);
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 0px 6px 0px 5px;
+  accent-color: var(--primary);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+select {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 42px;
+  padding: 0px 20px 0px 40px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(/images/chevron-down.svg);
+  background-repeat: no-repeat;
+  background-position: center right 10px;
+  background-size: 10px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+input[type="button"],
+input[type="submit"] {
+  width: calc(50% - 8px);
+  height: 42px;
+  background-color: var(--primary);
+  border-radius: 4px;
+  border: none;
+  color: white;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+input[type="text"]::before,
+input[type="email"]::before,
+input[type="date"]::before,
+input[type="password"]::before,
+select::before {
+  outline: 1px solid var(--primary);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="password"]:focus,
+select:focus {
+  outline: 1px solid var(--primary);
+}
+
+/* Add/Edit form styles ends here */
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+
   /* navbar styles starts here */
   .navbar,
   .navbar div {
     flex-direction: column;
     padding: 0 0;
   }
+
   .navbar h4 {
     padding: 14px 16px;
     text-align: center;
   }
+
   /* navbar styles ends here */
+
+  /* main styles starts here */
+  .main {
+    flex-direction: column;
+  }
+
+  #detail-view {
+    flex: 60%;
+    margin-left: 0;
+    margin-top: 16px;
+  }
+
+  #dob-state {
+    flex-direction: column;
+  }
+
+  .horizontal-input {
+    flex-direction: column;
+  }
+
+  input[type="button"],
+  input[type="submit"] {
+    width: 100%;
+  }
+
+  /* main styles ends here */
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
+/* Medium devices (landscape tablets, 601px to 768px) */
 @media only screen and (min-width: 601px) and (max-width: 768px) {
+
+  /* main styles starts here */
+  .main {
+    flex-direction: column;
+  }
+
+  #detail-view {
+    flex: 60%;
+    margin-left: 0;
+    margin-top: 16px;
+  }
+
+  .horizontal-input {
+    flex-direction: column;
+  }
+
+  /* main styles ends here */
+}
+
+/* Medium devices ( 768px and up) */
+@media only screen and (min-width: 769px) and (max-width: 990px) {
+
+  /* main styles starts here */
+  .horizontal-input {
+    flex-direction: column;
+  }
+
+  input[type="button"],
+  input[type="submit"] {
+    width: 100%;
+  }
+
+  /* main styles ends here */
 }
