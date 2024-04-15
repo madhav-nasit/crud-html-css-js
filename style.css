@@ -8,6 +8,7 @@
   --border: #e6e6e6;
   --tertiary: #d3c8e0;
   --error: red;
+  --success: green;
 }
 
 body {
@@ -105,11 +106,12 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 40px;
+  height: 42px;
+  box-sizing: border-box;
 }
 
 .horizontal-input {
@@ -182,7 +184,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 input[type="button"],
-input[type="submit"] {
+button {
   width: calc(50% - 8px);
   height: 42px;
   background-color: var(--primary);
@@ -190,7 +192,6 @@ input[type="submit"] {
   border: none;
   color: white;
   text-decoration: none;
-  margin: 4px 2px;
   cursor: pointer;
 }
 
@@ -208,6 +209,27 @@ input[type="date"]:focus,
 input[type="password"]:focus,
 select:focus {
   outline: 1px solid var(--primary);
+}
+
+.error-message {
+  color: var(--error);
+  font-size: 10px;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+.alert {
+  width: 100%;
+  background-color: var(--success);
+  display: none;
+  padding: 8px 16px;
+  align-items: center;
+  color: var(--text-dark);
+  font-size: 14px;
+}
+
+.show {
+  display: flex !important;
 }
 
 /* Add/Edit form styles ends here */
@@ -249,7 +271,7 @@ select:focus {
   }
 
   input[type="button"],
-  input[type="submit"] {
+  button {
     width: 100%;
   }
 
@@ -286,7 +308,7 @@ select:focus {
   }
 
   input[type="button"],
-  input[type="submit"] {
+  button {
     width: 100%;
   }
 
